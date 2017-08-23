@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <jor>
+            <span slot="blogUrl">{{jspangData.blogUrl}}</span>
+            <span slot="netName">{{jspangData.netName}}</span>
+        </jor>
+    </div>
+
+    <p>
+        <a href="./../index.html">goback index.html</a>
+    </p>
+    <template id="jor">
+      <div>
+        <p>博客地址：<slot name="blogUrl"></slot></p>
+        <p>网名： <slot name="netName"></slot></p>
+      </div>
+    </template>
+</body>
+<script>
+    var jor = {
+            template: '#jor'
+        }
+        //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            jspangData: {
+                blogUrl: 'http://baidu.com',
+                netName: 'jorden'
+            }
+        },
+        components: {
+            'jor': jor
+        }
+
+    });
+</script>
+
+</html>

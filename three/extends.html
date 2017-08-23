@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        ${num}
+        <p>
+            <button @click="add">++</button>
+        </p>
+    </div>
+    <p>
+        <a href="./../index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    /*
+     *  Vue 选项---------------> extends
+     */
+    var extendObj = {
+        updated: function() {
+            console.log('this is extend')
+        }
+    };
+
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 0
+        },
+        methods: {
+            add: function() {
+                this.num++
+            }
+        },
+        extends: extendObj,
+        delimiters: ['${', '}']
+    })
+</script>
+
+</html>

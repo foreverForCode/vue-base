@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{num}}
+        <p>
+            <button @click="add">add</button>
+        </p>
+    </div>
+    <p>
+        <button onclick="reduce()">reduce</button>
+    </p>
+    <p>
+        <a href="./../index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    /*
+     *  监听事件
+     */
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 0
+        },
+        methods: {
+            add: function() {
+                this.num++
+            }
+        }
+    });
+
+    //监听reduce事件，一旦emit就执行 
+    app.$on('reduce', function() {
+        this.num--;
+    });
+
+    function reduce() {
+        app.$emit('reduce')
+    }
+</script>
+
+</html>

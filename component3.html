@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span>{{message}}</span>
+        <component :is="who"></component>
+        <button @click="changeComponent">changeComponent</button>
+    </div>
+
+    <p>
+        <a href="./index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    /*
+     * 1. 自定义切换组件
+     */
+
+    var componentA = {
+        template: `<p>this is a component A </p>`
+    }
+
+    var componentB = {
+        template: `<p>this is a component B </p>`
+    }
+
+    var componentC = {
+        template: `<p>this is a component C </p>`
+    }
+
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'hello Vue.js',
+            who: "componentB"
+        },
+        components: {
+            "componentA": componentA,
+            "componentB": componentB,
+            "componentC": componentC
+        },
+        methods: {
+            changeComponent: function() {
+                if (this.who === "componentA") {
+                    this.who = "componentB"
+                } else if (this.who === "componentB") {
+                    this.who = "componentC"
+                } else {
+                    this.who = "componentA"
+                }
+            }
+        }
+
+    })
+</script>
+
+</html>

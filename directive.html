@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-jor="colors" v-jors="colors">{{message}}</span>
+    </div>
+    <p>
+        <a href="./index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    // creacte  global directive
+
+    Vue.directive('jor', function(el, binding) {
+        console.log(binding);
+        el.style = "color:" + binding.value
+    })
+
+    // 指令的生命周期
+    Vue.directive('jors', {
+        bind: function(el, binding) {
+            console.log('this is a bind');
+            el.style = `color:${binding.value}`
+        }
+    })
+
+    // 指令的生命周期
+    // bind:function(){//被绑定
+    //      console.log('1 - bind');
+    //    },
+    // inserted: function() { //绑定到节点
+    //         console.log('2 - inserted');
+    //     },
+    //     update: function() { //组件更新
+    //         console.log('3 - update');
+    //     },
+    //     componentUpdated: function() { //组件更新完成
+    //         console.log('4 - componentUpdated');
+    //     },
+    //     unbind: function() { //解绑
+    //         console.log('1 - bind');
+    //     }
+
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'hello Vue.js',
+            colors: 'red'
+        }
+    })
+</script>
+
+</html>

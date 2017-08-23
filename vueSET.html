@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <p>
+            <span>{{num}}</span>
+        </p>
+        <p v-for="item in arr">
+            {{item}}
+        </p>
+    </div>
+    <button onclick="add()">add</button>
+    <p>
+        <a href="./index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    var outData = {
+        num: 0,
+        message: 'hello Vue.js',
+        arr: [
+            'aaa',
+            'bbb',
+            'ccc'
+        ]
+    };
+
+    // 外部添加触发add事件的函数
+
+    function add() {
+        // outData.num++
+        // app.num++
+        //Vue.set(app, 'num', 10)       // vue 不能直接修改数组的数据,需要使用 Vue.set()
+        // app.arr[1] = 'jor'
+        Vue.set(app.arr, 1, 'jor')
+    }
+
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: outData,
+        methods: {
+            add: function() {
+                this.num++
+            }
+        }
+    })
+</script>
+
+</html>

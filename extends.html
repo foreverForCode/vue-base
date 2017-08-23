@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <auther></auther>
+    </div>
+
+    <p>
+        <a href="./index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    // 新建构造器扩展
+    var autherUrl = Vue.extend({
+        template: `<p><a :href="autherurl">{{autherName}}</a></p>`,
+        data: function() {
+            return {
+                autherurl: 'http://baidu.com',
+                autherName: 'jor'
+            }
+        }
+    });
+    new autherUrl().$mount('auther')
+
+    //初始化 Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'hello Vue.js'
+        }
+    })
+</script>
+
+</html>

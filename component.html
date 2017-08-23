@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <jor></jor>
+    </div>
+
+    <div id="apps">
+
+        <jor></jor>
+        <jubu></jubu>
+    </div>
+    <p>
+        <a href="./index.html">goback index.html</a>
+    </p>
+</body>
+<script>
+    // create a global componet
+
+    Vue.component('jor', {
+        template: `<p style="color:red"> this is a define componet</p>`
+    })
+
+    //create Vue实例
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: 'hello Vue.js'
+        }
+    })
+
+    // 局部组件
+    var apps = new Vue({
+        el: "#apps",
+        components: {
+            "jubu": {
+                template: `<p>this is jubu component</p>` // 这里需要一个标签包裹内容
+            }
+        }
+    })
+</script>
+
+</html>
